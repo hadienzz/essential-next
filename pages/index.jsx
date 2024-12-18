@@ -1,7 +1,7 @@
 import Layout from "../components/layout/Layout";
 import MeetupList from "../components/meetups/MeetupList";
 
-const DUMMY_MEETUP = [
+export const DUMMY_MEETUP = [
   {
     id: "m1",
     title: "A first meetup",
