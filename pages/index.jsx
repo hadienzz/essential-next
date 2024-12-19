@@ -20,6 +20,7 @@ export const DUMMY_MEETUP = [
   },
 ];
 
+
 const HomePage = () => {
   return (
     <>
@@ -27,5 +28,16 @@ const HomePage = () => {
     </>
   );
 };
+
+export async function getStaticProps(context) {
+
+  return {
+    props: {
+      meetups: DUMMY_MEETUP
+    },
+    revalidate: 1
+  }
+
+}
 
 export default HomePage;
