@@ -1,16 +1,60 @@
 import { useRouter } from "next/router";
 import MeetupDetail from '../../components/meetups/MeetupDetail'
+import { DUMMY_MEETUP } from "..";
 
-const MeetupDetails = (props) => {
-    const router = useRouter()
 
-    const params = router.query.meetupId
+// export async function getStaticProps(context) {
+//     const { meetupId } = context.params
+
+//     const selectedMeetup = DUMMY_MEETUP.find((meetup) => meetup.id === meetupId)
+
+//     return {
+//         props: {
+//             meetup: selectedMeetup
+//         }
+//     }
+// }
+
+// export async function getStaticPaths() {
+//     const paths = DUMMY_MEETUP.map((meetup) => {
+//         return { params: { meetupId: meetup.id } }
+//     })
+
+//     return {
+//         paths,
+//         fallback: false
+//     }
+// }
+
+export async function getStaticProps(context) {
+    const { meetupId } = context.params
+
+    const meetupData = DUMMY_MEETUP.find((meetup) => meetup.id === meetupId)
+
+    return {
+        props: {
+            meetup: meetupData
+        }
+    }
+}
+
+export async function getStaticPaths() {
+    const paths = DUMMY_MEETUP.map((meetup) => {
+        return { params: { meetupId: meetup.id } }
+    })
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+const MeetupDetails = ({ meetup }) => {
+    console.log(meetup)
 
     return (
-
-
         <>
-            <MeetupDetail image={'https://upload.wikimedia.org/wikipedia/commons/4/4f/Tell_Qaramel_vue_a%C3%A9rienne.jpg'} title={'A First Meetup'} address={'Jalan Durian Raya, 5, 4/5, Bogor'} description={'This is a second meetup!'} />
+            <MeetupDetail {...meetup} />
         </>
     )
 };

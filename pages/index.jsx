@@ -29,15 +29,16 @@ const HomePage = () => {
   );
 };
 
-export async function getStaticProps(context) {
-
-  return {
-    props: {
-      meetups: DUMMY_MEETUP
-    },
-    revalidate: 1
-  }
-
-}
 
 export default HomePage;
+
+// export async function getServerSideProps(context) {
+//   const req = context.req
+//   const res = context.res
+
+//   return {
+//     props: {
+//       meetup: DUMMY_MEETUP
+//     }
+//   }
+// }
