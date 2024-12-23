@@ -9,7 +9,7 @@ function NewMeetupForm(props) {
   const addressInputRef = useRef();
   const descriptionInputRef = useRef();
 
-  function submitHandler(event) {
+  const submitHandler = (event) => {
     event.preventDefault();
 
     const enteredTitle = titleInputRef.current.value;
@@ -17,15 +17,15 @@ function NewMeetupForm(props) {
     const enteredAddress = addressInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
 
-    const meetupData = {
+    const data = {
       title: enteredTitle,
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
     };
 
-    props.onAddMeetup(meetupData);
-  }
+    props.onAddMeetup(data);
+  };
 
   return (
     <Card>
