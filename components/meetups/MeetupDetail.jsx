@@ -1,9 +1,6 @@
 import { DUMMY_MEETUP } from '../../pages'
 import classes from './MeetupDetail.module.css'
 
-
-
-
 const MeetupDetail = (props) => {
     return (
         <div className={classes.detail}>

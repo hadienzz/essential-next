@@ -1,60 +1,21 @@
-import { useRouter } from "next/router";
-import MeetupDetail from '../../components/meetups/MeetupDetail'
-import { DUMMY_MEETUP } from "..";
-
-
-// export async function getStaticProps(context) {
-//     const { meetupId } = context.params
-
-//     const selectedMeetup = DUMMY_MEETUP.find((meetup) => meetup.id === meetupId)
-
-//     return {
-//         props: {
-//             meetup: selectedMeetup
-//         }
-//     }
-// }
-
-// export async function getStaticPaths() {
-//     const paths = DUMMY_MEETUP.map((meetup) => {
-//         return { params: { meetupId: meetup.id } }
-//     })
-
-//     return {
-//         paths,
-//         fallback: false
-//     }
-// }
-
-export async function getStaticProps(context) {
-    const { meetupId } = context.params
-
-    const meetupData = DUMMY_MEETUP.find((meetup) => meetup.id === meetupId)
-
-    return {
-        props: {
-            meetup: meetupData
-        }
-    }
-}
+import { MongoClient } from "mongodb";
 
 export async function getStaticPaths() {
-    const paths = DUMMY_MEETUP.map((meetup) => {
-        return { params: { meetupId: meetup.id } }
-    })
+    const client = await MongoClient.connect('mongodb+srv://hadienzz:h4d13Nbtk@meetup-data.z4ve1.mongodb.net/meetups?retryWrites=true&w=majority&appName=meetup-data')
 
-    return {
-        paths,
-        fallback: false
-    }
+    const db = client.db()
+
+    const meetupsCollection = db.collection('meetups')
+
+
 }
 
-const MeetupDetails = ({ meetup }) => {
-    console.log(meetup)
 
+
+const MeetupDetails = () => {
     return (
         <>
-            <MeetupDetail {...meetup} />
+            {/* <MeetupDetail /> */}
         </>
     )
 };
