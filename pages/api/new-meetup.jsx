@@ -16,7 +16,6 @@ const addMeetupHandler = async (req, res) => {
         const meetupCollection = db.collection('meetups')
 
         const result = await meetupCollection.insertOne(data)
-        console.log(result)
         client.close()
 
         router.push('/')
