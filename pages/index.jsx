@@ -1,6 +1,13 @@
 import { MongoClient } from "mongodb";
 import Layout from "../components/layout/Layout";
 import MeetupList from "../components/meetups/MeetupList";
+import Head from "next/head";
+
+export async function generateMetadata() {
+  return {
+    title: 'Meetup Page'
+  }
+}
 
 export async function getStaticProps() {
   const client = await MongoClient.connect('mongodb+srv://hadienzz:h4d13Nbtk@meetup-data.z4ve1.mongodb.net/meetups?retryWrites=true&w=majority&appName=meetup-data')
@@ -35,6 +42,9 @@ const HomePage = ({ meetups }) => {
   console.log(meetups)
   return (
     <>
+      <Head>
+        <title>React Meetups</title>
+      </Head>
       <MeetupList meetups={meetups} />;
     </>
   );

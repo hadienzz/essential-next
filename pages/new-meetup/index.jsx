@@ -1,3 +1,4 @@
+import Head from "next/head";
 import NewMeetupForm from "../../components/meetups/NewMeetupForm";
 
 const NewMeetupPage = () => {
@@ -16,8 +17,11 @@ const NewMeetupPage = () => {
 
   return (
     <>
+      <Head>
+        <title>New Meetup</title>
+      </Head>
       <NewMeetupForm onAddMeetup={addMeetupHandler} />
-    </> 
+    </>
   );
 };
 
