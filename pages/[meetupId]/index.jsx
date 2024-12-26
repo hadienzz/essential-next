@@ -1,14 +1,6 @@
 import { MongoClient, ObjectId } from "mongodb";
 import MeetupDetail from '../../components/meetups/MeetupDetail'
 
-const MeetupDetails = ({ meetupData }) => {
-    return (
-        <>
-            <MeetupDetail {...meetupData} />
-        </>
-    )
-};
-
 export async function getStaticPaths() {
     const client = await MongoClient.connect('mongodb+srv://hadienzz:h4d13Nbtk@meetup-data.z4ve1.mongodb.net/meetups?retryWrites=true&w=majority&appName=meetup-data')
 
@@ -54,5 +46,15 @@ export async function getStaticProps(context) {
         }
     }
 }
+
+
+const MeetupDetails = ({ meetupData }) => {
+    return (
+        <>
+            <MeetupDetail {...meetupData} />
+        </>
+    )
+};
+
 
 export default MeetupDetails;
